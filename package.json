@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "compile": "tsc",
-    "start": "yarn compile && node ./dist/index.js"
+    "start": "yarn compile && node ./dist/index.js",
+    "codegen": "graphql-codegen --config codegen.ts"
   },
   "description": "graphql with apollo server",
   "main": "index.js",
@@ -16,6 +17,10 @@
     "graphql": "^16.8.1"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "5.0.2",
+    "@graphql-codegen/introspection": "^4.0.3",
+    "@graphql-codegen/typescript": "4.0.7",
+    "@graphql-codegen/typescript-resolvers": "4.1.0",
     "@types/node": "^20.14.2",
     "typescript": "^5.4.5"
   }
