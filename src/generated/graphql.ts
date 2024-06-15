@@ -40,19 +40,30 @@ export type Book = {
   title?: Maybe<Scalars["String"]["output"]>;
 };
 
+export type BookPostContent = {
+  author?: InputMaybe<Scalars["String"]["input"]>;
+  title?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+export enum BookType {
+  Biography = "BIOGRAPHY",
+  Essay = "ESSAY",
+  Novel = "NOVEL",
+}
+
 export type Mutation = {
   __typename?: "Mutation";
   addBook?: Maybe<Book>;
 };
 
 export type MutationAddBookArgs = {
-  author?: InputMaybe<Scalars["String"]["input"]>;
-  title?: InputMaybe<Scalars["String"]["input"]>;
+  bookContent?: InputMaybe<BookPostContent>;
 };
 
 export type Query = {
   __typename?: "Query";
   authors?: Maybe<Array<Maybe<Author>>>;
+  bookType?: Maybe<Array<Maybe<BookType>>>;
   books?: Maybe<Array<Maybe<Book>>>;
 };
 
@@ -165,6 +176,8 @@ export type DirectiveResolverFn<
 export type ResolversTypes = {
   Author: ResolverTypeWrapper<Author>;
   Book: ResolverTypeWrapper<Book>;
+  BookPostContent: BookPostContent;
+  BookType: BookType;
   Boolean: ResolverTypeWrapper<Scalars["Boolean"]["output"]>;
   Mutation: ResolverTypeWrapper<{}>;
   Query: ResolverTypeWrapper<{}>;
@@ -175,6 +188,7 @@ export type ResolversTypes = {
 export type ResolversParentTypes = {
   Author: Author;
   Book: Book;
+  BookPostContent: BookPostContent;
   Boolean: Scalars["Boolean"]["output"];
   Mutation: {};
   Query: {};
@@ -221,6 +235,11 @@ export type QueryResolvers<
 > = {
   authors?: Resolver<
     Maybe<Array<Maybe<ResolversTypes["Author"]>>>,
+    ParentType,
+    ContextType
+  >;
+  bookType?: Resolver<
+    Maybe<Array<Maybe<ResolversTypes["BookType"]>>>,
     ParentType,
     ContextType
   >;
