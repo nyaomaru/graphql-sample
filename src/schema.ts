@@ -9,12 +9,24 @@ export const typeDefs = `
     books: [Book]
   }
 
+  enum BookType {
+    NOVEL
+    ESSAY
+    BIOGRAPHY
+  }
+
+  input BookPostContent {
+    title: String
+    author: String
+  }
+
   type Mutation {
-    addBook(title: String, author: String): Book
+    addBook(bookContent: BookPostContent): Book
   }
 
   type Query {
     books: [Book]
     authors: [Author]
+    bookType: [BookType]
   }
 `;
