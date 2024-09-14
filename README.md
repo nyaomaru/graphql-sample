@@ -7,7 +7,7 @@ Graphql sample repository
 Run apollo server.
 
 ```sh
-yarn && yarn start
+pnpm i && pnpm start
 ```
 
 Then, you can request the query for `http://localhost:4000` with some tools like Apollo Sandbox.
@@ -19,7 +19,7 @@ Then, you can request the query for `http://localhost:4000` with some tools like
 After running server, you can run below command to create schema type definition.
 
 ```sh
-yarn codegen
+pnpm codegen
 ```
 
 Then, the `./arc/generated/graphql.ts` is generated.
